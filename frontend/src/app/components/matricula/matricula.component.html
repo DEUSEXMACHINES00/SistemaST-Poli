@@ -1,0 +1,84 @@
+<div class="container-sm">
+    <form #matriculaForm="ngForm" (ngSubmit)="onSubmit(matriculaForm)">
+        <h1>{{title}}</h1>
+        <hr>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tipo Vehiculo</label>
+            <select name="tipo" id="inputs" #tipo="ngModel" class="form-select" aria-label="Default select example"
+                [(ngModel)]="matricula.tipo" required>
+                <option value="Automovil">Automovil</option>
+                <option value="Moto">Moto</option>
+                <option value="Carro Pesado">Carro Pesado</option>
+            </select>
+            <span class="form_error" *ngIf="tipo.touched && !tipo.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Placa </label>
+            <input type="text" class="form-control" name="placa" #placa="ngModel" [(ngModel)]="matricula.placa"
+                required [disabled]="actualizarCompo">
+
+            <span class="form_error" *ngIf="placa.touched && !placa.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Marca </label>
+            <input type="text" class="form-control" name="marca" #marca="ngModel" [(ngModel)]="matricula.marca"
+                required>
+
+            <span class="form_error" *ngIf="marca.touched && !marca.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Fecha Matricula </label>
+            <input type="date" class="form-control" name="fechaMatricula" #fechaMatricula="ngModel"
+                [(ngModel)]="matricula.fechaMatricula" required>
+
+            <span class="form_error" *ngIf="fechaMatricula.touched && !fechaMatricula.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Nombre Propietario </label>
+            <input type="text" class="form-control" name="nombre" #nombre="ngModel"
+                [(ngModel)]="matricula.propietario.nombre" required>
+
+            <span class="form_error" *ngIf="nombre.touched && !nombre.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Identificacion Propietario </label>
+            <input type="text" class="form-control" name="id" #id="ngModel" [(ngModel)]="matricula.propietario.id"
+                required>
+
+            <span class="form_error" *ngIf="id.touched && !id.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tipo Propietario</label>
+            <select name="tipop" #tipop="ngModel" class="form-select" [(ngModel)]="matricula.propietario.tipo" required>
+                <option value="Empresa">Empresa</option>
+                <option value="Persona">Persona</option>
+            </select>
+            <span class="form_error" *ngIf="tipop.touched && !tipop.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Direccion Propietario </label>
+            <input type="text" class="form-control" name="direccion" #direccion="ngModel"
+                [(ngModel)]="matricula.propietario.direccion" required>
+
+            <span class="form_error" *ngIf="direccion.touched && !direccion.valid">
+                Esta informacion es obligatoria
+            </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="!matriculaForm.form.valid">Enviar</button>
+    </form>
+</div>

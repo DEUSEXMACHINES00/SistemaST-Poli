@@ -1,0 +1,34 @@
+<button type="button" class="btn btn-success" [routerLink]="['/matricula']" >Agregar Matricula</button>
+<br>
+<hr>
+<table class="table">
+    <thead class="thead-dark">
+        <tr bgcolor="#6495ED">
+            <th>Tipo Vehiculo</th>
+            <th>Placa Vehiculo</th>
+            <th>Marca</th>
+            <th>Fecha Matricula</th>
+            <th>Id Prop</th>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let matricula of matriculas">
+            <th>{{matricula.tipo}}</th>
+            <th>{{matricula.placa}}</th>
+            <th>{{matricula.marca}}</th>
+            <th>{{matricula.fechaMatricula}}</th>
+            <th>{{matricula.propietario.id}}</th>
+            <th>{{matricula.propietario.tipo}}</th>
+            <th>{{matricula.propietario.nombre}}</th>
+            <th>{{matricula.propietario.direccion}}</th>
+            <th><button  type="button" class="btn btn-primary" [routerLink]="['/actualizar-matricula',matricula.placa]">Actualizar</button>
+                <button type="button" class="btn btn-danger" (click)="deleteMatricula(matricula.placa)">Borrar</button>
+            </th>
+        </tr>
+    </tbody>
+</table>

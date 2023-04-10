@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+#Sistemast app backend service
+  sistemastapp-back:
+    build:
+      context: ./nodeApp      
+    container_name: sistemastapp-back           
+    ports:
+      - 3000:3000 
+#Billin app frontend service
+  billingapp-front:
+    build:
+      context: ./angularApp      
+    depends_on:     
+      - sistemastapp-back
+#rango de puertos para escalar    
+    ports:
+      - 8080:80 
